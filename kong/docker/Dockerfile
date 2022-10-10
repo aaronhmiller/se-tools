@@ -1,0 +1,4 @@
+FROM arm64v8/kong:2.4.1-alpine
+USER root
+COPY kong_policy/*.rock ./
+RUN luarocks install kong-plugin-salt-sensor-1.5.10-0.src.rock
