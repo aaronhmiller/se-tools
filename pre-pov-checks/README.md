@@ -18,7 +18,7 @@ This tests the ability of the machine running the Hybrid to reach out from the c
 
 3. `openssl s_client -connect traffic-receiver-a.dnssf.com:443` (ctrl-C to return to shell prompt)
 
-This tests if TLS is being rewritten. The Hybrid requires a direct connection to Salt services. Sometimes, TLS certificates are rewritten to intercept TLS encrypted traffic.
+This tests if TLS is being rewritten. The Hybrid requires a direct connection to Salt services. Sometimes, TLS certificates are rewritten to intercept TLS encrypted traffic. The certificate you see should be issued to `*.dnssf.com`. Anything else will cause errors in the pre-flight checks when testing Salt services.
 
 
 
