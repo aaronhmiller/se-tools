@@ -19,7 +19,13 @@ else
 fi
 
 echo "3. Checking TLS certificate..."
-echo "Q" | timeout 5 openssl s_client -connect traffic-receiver-a.dnssf.com:443 2> /dev/null | openssl x509 -subject -noout|grep -q "*.dnssf.com"
+
+if [ "$(echo "$OSTYPE" | cut -c 1-6)" = "darwin" ]
+then
+  echo "Q" | openssl s_client -connect traffic-receiver-a.dnssf.com:443 2> /dev/null | openssl x509 -subject -noout|grep -q "*.dnssf.com"
+else
+  echo "Q" | timeout 5 openssl s_client -connect traffic-receiver-a.dnssf.com:443 2> /dev/null | openssl x509 -subject -noout|grep -q "*.dnssf.com"
+fi
 if [ $? = 0 ]
 then
   echo "   openssl check passed."
