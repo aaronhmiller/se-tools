@@ -23,3 +23,6 @@ This tests if TLS is being rewritten. The Hybrid requires a direct connection to
 
 
 A convenience script has been included to run these three checks and verify expected output.
+
+NOTE: If you see errors similar to `error:14004410:SSL routines:CONNECT_CR_SRVR_HELLO:sslv3 alert handshake failure` using the openssl command, try this:
+`openssl s_client -connect traffic-receiver-a.dnssf.com:443 -servername traffic-receiver-a.dnssf.com`
